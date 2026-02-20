@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vishal Sai Godavari | Personal Portfolio</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* CSS STYLES */
+
+      /* 1. Global Setup & CSS Variables */
+      :root {
+        --primary-color: #007bff; /* Bright Blue */
+        --primary-hover: #0056b3;
+
+        /* Light Mode */
+        --bg-color-light: #f8f9fa;
+        --card-color-light: #ffffff;
+        --text-color-light: #212529;
+        --secondary-text-light: #555;
+        --border-color-light: #dee2e6;
+        --gradient-light: linear-gradient(
+          45deg,
+          #e6e9f0,
+          #eef1f5,
+          #e6f0f5,
+          #eef1f5,
+          #e6e9f0
+        );
+
+        /* Dark Mode */
+        --bg-color-dark: #121212;
+        --card-color-dark: #1e1e1e;
+        --text-color-dark: #e0e0e0;
+        --secondary-text-dark: #aaaaaa;
+        --border-color-dark: #333;
+        --gradient-dark: linear-gradient(
+          45deg,
+          #1d2633,
+          #111827,
+          #1c2a38,
+          #111827,
+          #1d2633
+        );
+
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
+        --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.1);
+        --shadow-hover-dark: 0 6px 16px rgba(0, 0, 0, 0.3);
+
+        /* Default to light mode */
+        --card-color: var(--card-color-light);
+        --text-color: var(--text-color-light);
+        --secondary-text: var(--secondary-text-light);
+        --border-color: var(--border-color-light);
+        --shadow-current: var(--shadow);
+        --shadow-hover-current: var(--shadow-hover);
+      }
+
+      body.dark-mode {
+        /* Switch to dark mode */
+        --card-color: var(--card-color-dark);
+        --text-color: var(--text-color-dark);
+        --secondary-text: var(--secondary-text-dark);
+        --border-color: var(--border-color-dark);
+        --shadow-current: var(--shadow-dark);
+        --shadow-hover-current: var(--shadow-hover-dark);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Animated Gradient Background */
+      @keyframes animated-gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--text-color);
+        line-height: 1.7;
+
+        /* Light mode gradient */
+        background: var(--gradient-light);
+        background-size: 300% 300%;
+        animation: animated-gradient 20s ease infinite;
+        transition: background 0.5s ease;
+      }
+
+      body.dark-mode {
+        /* Dark mode gradient */
+        background: var(--gradient-dark);
+        background-size: 300% 300%;
+        animation: animated-gradient 20s ease infinite;
+      }
+
+      /* 2. Utility Classes */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: var(--primary-color);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover-current);
+      }
+
+      .btn-secondary {
+        background: var(--card-color);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary-color);
+        color: #fff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-bottom: 1rem;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+      h2 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2.5rem;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--primary-color);
+        border-radius: 2px;
+        margin: 0.5rem auto 0;
+      }
+      h3 {
+        font-size: 1.4rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        color: var(--secondary-text);
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      /* 3. Header & Navigation */
+      .header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        /* Use translucent card color for a slight "glass" effect */
+        background: var(--card-color);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-current);
+        z-index: 1000;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .nav-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-color);
+        transition: color 0.3s ease;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--secondary-text);
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      .theme-toggle {
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: var(--text-color);
+        transition: color 0.3s ease;
+      }
+      .theme-toggle:hover {
+        color: var(--primary-color);
+      }
+
+      /* 4. Sections */
+      section {
+        padding: 5rem 0;
+        /* Sections are transparent by default, showing the animated body bg */
+      }
+
+      .section-bg {
+        /* This class gives a section a solid card background */
+        background: var(--card-color);
+        transition: background-color 0.3s ease;
+      }
+
+      /* Section Animation (Scroll Fade-in) */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* 5. Hero Section */
+      #home {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+
+      #home .container {
+        max-width: 800px;
+      }
+
+      #home h1 {
+        color: var(--text-color);
+      }
+
+      #home h1 span {
+        color: var(--primary-color);
+      }
+
+      #home .subtitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--secondary-text);
+        margin-bottom: 2rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .social-links a {
+        font-size: 1.8rem;
+        color: var(--secondary-text);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      /* 6. About Section */
+      .about-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .about-image img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--card-color);
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .about-image img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+      }
+
+      .about-text h2 {
+        text-align: left;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text h2::after {
+        margin: 0.5rem 0 0; /* Align underline to left */
+      }
+
+      .about-text p {
+        font-size: 1.1rem;
+        text-align: left;
+        color: var(--secondary-text);
+      }
+
+      /* 7. Education & Experience Shared Card Style */
+      .content-card {
+        background: var(--card-color);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-current);
+        border-left: 5px solid var(--primary-color);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .content-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover-current);
+      }
+
+      .content-card h3 {
+        color: var(--text-color);
+      }
+
+      .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        flex-wrap: wrap; /* For responsive date */
+      }
+
+      .content-header span {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+      }
+
+      .content-card ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        color: var(--secondary-text);
+      }
+
+      .content-card li {
+        margin-bottom: 0.5rem;
+      }
+
+      .content-card strong {
+        color: var(--text-color);
+      }
+
+      /* 8. Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skill-category {
+        background: var(--card-color);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-current);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .skill-category h3 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .skill-category ul {
+        padding-left: 20px;
+        list-style: none;
+      }
+
+      .skill-category li {
+        position: relative;
+        color: var(--secondary-text);
+        margin-bottom: 0.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .skill-category li::before {
+        content: "\f00c"; /* Font Awesome check icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--primary-color);
+        margin-right: 10px;
+        position: absolute;
+        left: -20px;
+      }
+
+      /* 9. Experience Section */
+      /* This class is now used by Education as well */
+      .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .experience-date {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* 10. Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        background: var(--card-color);
+        border-radius: 8px;
+        box-shadow: var(--shadow-current);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          background-color 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover-current);
+      }
+
+      .project-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .project-content h3 {
+        color: var(--text-color);
+      }
+
+      .project-content p {
+        color: var(--secondary-text);
+      }
+
+      .project-links {
+        padding: 0 1.5rem 1.5rem;
+        border-top: 1px solid var(--border-color);
+        padding-top: 1rem;
+        margin-top: auto;
+        transition: border-color 0.3s ease;
+      }
+
+      .project-links a {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .project-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* 11. Achievements Section */
+      .achievements-list {
+        max-width: 800px;
+        margin: 0 auto;
+        list-style: none;
+        padding-left: 25px;
+      }
+
+      .achievements-list li {
+        position: relative;
+        font-size: 1.1rem;
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .achievements-list li::before {
+        content: "\f0a9"; /* Font Awesome arrow icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--primary-color);
+        position: absolute;
+        left: -25px;
+      }
+
+      .achievements-list strong {
+        color: var(--text-color);
+      }
+
+      /* 12. Contact Section */
+      #contact {
+        text-align: center;
+      }
+
+      #contact p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        color: var(--secondary-text);
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+
+      .contact-item {
+        font-size: 1.1rem;
+        color: var(--text-color);
+        transition: color 0.3s ease;
+      }
+
+      .contact-item i {
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+      }
+
+      .contact-item a {
+        color: var(--text-color);
+      }
+      .contact-item a:hover {
+        color: var(--primary-color);
+      }
+
+      /* 13. Footer */
+      .footer {
+        text-align: center;
+        padding: 2rem 0;
+        background: var(--card-color);
+        border-top: 1px solid var(--border-color);
+        margin-top: 3rem;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .footer p {
+        margin: 0;
+        color: var(--secondary-text);
+      }
+
+      /* 14. Responsive Design */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.2rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        .navbar {
+          flex-direction: column;
+          height: auto;
+          padding: 1rem 0;
+        }
+        .nav-menu {
+          margin-top: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        #home {
+          min-height: 70vh;
+          padding-top: 2rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        /* About Section Responsive */
+        .about-container {
+          flex-direction: column;
+          text-align: center;
+        }
+        .about-text h2 {
+          text-align: center;
+        }
+        .about-text h2::after {
+          margin: 0.5rem auto 0;
+        }
+        .about-text p {
+          text-align: center;
+        }
+        .about-image img {
+          width: 220px;
+          height: 220px;
+        }
+
+        /* Content Card Responsive */
+        .content-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .content-header span {
+          margin-top: 0.5rem;
+        }
+      }
+
+      /* Particles background container */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <header class="header">
+      <nav class="navbar container">
+        <a href="#home" class="nav-logo">Vishal Sai Godavari</a>
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="theme-toggle" id="theme-toggle">
+          <i class="fas fa-sun"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="container fade-in">
+          <h1>Hi, I'm <span>Vishal Sai Godavari</span></h1>
+          <p class="subtitle">
+            An aspiring software developer passionate about solving real-world
+            problems.
+          </p>
+          <div class="hero-buttons">
+            <a href="resume.pdf" class="btn" target="_blank">
+              <i class="fas fa-eye"></i> View Resume
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fas fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
+          <div class="social-links">
+            <a
+              href="https://linkedin.com/in/vishalsaigodavari"
+              target="_blank"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/VishalSaiGodavari"
+              target="_blank"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="mailto:vishalsai_godavari@srmap.edu.in" aria-label="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="tel:+919347323221" aria-label="Phone"
+              ><i class="fas fa-phone"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-bg">
+        <div class="container fade-in about-container">
+          <div class="about-image">
+            <img src="profile-pic.jpg" alt="Vishal Sai Godavari" />
+          </div>
+          <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+              As an aspiring software developer and current student, I am deeply
+              passionate about harnessing the power of technology to solve
+              real-world problems. My journey in the world of coding began with
+              curiosity and has evolved into a strong dedication to learning and
+              creating innovative solutions. Through my academic studies, I have
+              gained a solid foundation in programming languages such as Python
+              and C++, and I am continuously expanding my knowledge of software
+              development practices. I am eager to apply my skills in real-world
+              projects, collaborate with others, and grow as a developer, all
+              while striving to stay on the cutting edge of this ever-evolving
+              field.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="container fade-in">
+          <h2>Education</h2>
+          <div class="card-grid">
+            <div class="content-card">
+              <div class="content-header">
+                <h3>SRM University, AP - B.Tech in Computer Science</h3>
+                <span>Aug 2023 – 2027</span>
+              </div>
+              <ul>
+                <li><strong>CGPA:</strong> 9.12 / 10.0</li>
+                <li>
+                  <strong>Coursework:</strong> C, C++, Python, Data Structures, Computer Networks,
+                  Cloud Computing, Parallel & Distributed Computing, Software Engineering & Project Management, 
+                  Operating Systems, Machine Learning, Computer Organisation & Architecture,
+                  Design and Analysis of Algorithms, Web Technology (HTML, CSS,
+                  Bootstrap, JavaScript, React.js, PHP), Database Management
+                  (MySQL commands).
+                </li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <div class="content-header">
+                <h3>Class 12th (BIEAP)</h3>
+                <span>Completed 2022</span>
+              </div>
+              <ul>
+                <li><strong>Score:</strong> 955/1000</li>
+                <li><strong>Jee Main:</strong> 96.6%</li>
+                <li><strong>AP EAPCET:</strong> 1722 (Gen)</li>
+                <li><strong>TS EAMCET:</strong> 3k+ (Gen)</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <div class="content-header">
+                <h3>Class 10th (APSSC - BSEAP)</h3>
+                <span>Completed 2021</span>
+              </div>
+              <ul>
+                <li><strong>Score:</strong> 600/600</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section-bg">
+        <div class="container fade-in">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Frontend</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>Bootstrap & TailwindCSS</li>
+                <li>JavaScript (ES6+)</li>
+                <li>React.js & TypeScript</li>
+                <li>Express</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Backend</h3>
+              <ul>
+                <li>PHP</li>
+                <li>Node.js</li>
+                <li>Python (Flask, FastAPI)</li>
+                <li>MongoDB</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Databases & Tools</h3>
+              <ul>
+                <li>MySQL, SQL</li>
+                <li>Mongo Atlas</li>
+                <li>Git & GitHub</li>
+                <li>NPM</li>
+                <li>Visual Studio Code</li>
+                <li>OpenCV, Open3D, Pillow</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Concepts & Soft Skills</h3>
+              <ul>
+                <li>REST APIs</li>
+                <li>React-DOM & OOP</li>
+                <li>MVC Architecture</li>
+                <li>CRUD Operations</li>
+                <li>Agile Development</li>
+                <li>Communication & Teamwork</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Programming Languages</h3>
+              <ul>
+                <li>C++</li>
+                <li>Python</li>
+                <li>Java</li>
+                <li>JavaScript/TypeScript</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Machine Learning & DevOps</h3>
+              <ul>
+                <li>PyTorch</li>
+                <li>Docker</li>
+                <li>PostgreSQL</li>
+                <li>Redis</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container fade-in">
+          <h2>Experience</h2>
+          <div class="card-grid">
+            <div class="content-card fade-in">
+              <h3>Full Stack (MERN) developer Intern</h3>
+              <div class="experience-date">
+                Jun 2025 – Aug 2025 | EduBot Technologies
+              </div>
+              <ul>
+                <li>Gaining hands-on experience in MERN Stack Development.</li>
+                <li>Participating in a structured 2-month training program.</li>
+                <li>
+                  Applying my skills in a Capstone Project focused on real-world
+                  application.
+                </li>
+                <li>
+                  Collaborating with experienced professionals and fellow
+                  interns.
+                </li>
+              </ul>
+            </div>
+
+            <div class="content-card fade-in">
+              <h3>Image Processing Intern</h3>
+              <div class="experience-date">
+                Feb 2025 – April 2025 | SRM University, AP
+              </div>
+              <ul>
+                <li>
+                  3D Image processing: Worked on 3D Image Processing using
+                  Open3D and python.
+                </li>
+                <li>
+                  Point Cloud Processing: Analysis of point clouds and 3D mesh
+                  using ZED2i Camera.
+                </li>
+                <li>
+                  2D Image Processing: Detection of potholes using OpenCV by
+                  edge detection.
+                </li>
+                <li>
+                  Implementing algorithms for calculating the depth and volume
+                  of a Pothole.
+                </li>
+              </ul>
+            </div>
+
+            <div class="content-card fade-in">
+              <h3>Campus Placement Coordinator</h3>
+              <div class="experience-date">SRM University, Andhra Pradesh</div>
+              <ul>
+                <li>Coordinated and facilitated campus placement drives.</li>
+                <li>
+                  Managed large groups of students in high-pressure
+                  environments.
+                </li>
+                <li>
+                  Developed strong organizational, leadership, and interpersonal
+                  skills.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section-bg">
+        <div class="container fade-in">
+          <h2>Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Multi-User TO-DO list APP (Full stack – MERN)</h3>
+                <p>
+                  Developed a full-stack to-do application using React with
+                  TypeScript and MongoDB that supports multi-user authentication
+                  and real-time task management. Implemented secure login,
+                  role-based access, and CRUD operations.
+                </p>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Vishal-gvs/Multi-User_TODO_listAPP"
+                  target="_blank"
+                  ><i class="fab fa-github"></i> View on GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>E-Book Website (Full Stack)</h3>
+                <p>
+                  Developed an E-Book website using HTML/CSS/JS/React for
+                  frontend and PHP/MySQL for backend. Includes a unique
+                  audiobook feature for blind users, connecting Python
+                  (Flask/FastAPI) for text-to-speech.
+                </p>
+              </div>
+              <div class="project-links"></div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>IPAD’s AI Powered Computational calculator (Python)</h3>
+                <p>
+                  Developed a clone of IPAD’s AI calculator. It takes hand-drawn
+                  gestures, converts to text using PILLOW, and solves
+                  math/physics equations (differentiation, integration,
+                  Newtonian Mechanics).
+                </p>
+              </div>
+              <div class="project-links"></div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Library Management System (Database Management)</h3>
+                <p>
+                  A relational database project to manage books, readers, staff,
+                  and transactions. Uses normalized tables, SQL queries, and
+                  views to ensure data accuracy, simplified access, and secure
+                  operations.
+                </p>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://vishal-gvs.github.io/DBMSProject/"
+                  target="_blank"
+                  ><i class="fas fa-external-link-alt"></i> View Demo</a
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Smart traffic control System (OOP)</h3>
+                <p>
+                  A C++ simulation of a Smart Traffic Control System using OOP.
+                  It dynamically controls signals based on real-time traffic
+                  density and vehicle count to reduce delays and improve flow
+                  efficiency.
+                </p>
+              </div>
+              <div class="project-links"></div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Arduino-Based AIR Quality Monitoring</h3>
+                <p>
+                  Built an Arduino based system for Air Quality Monitoring in a
+                  Continuous manner using Temperature and Humidity Sensor, SPO2
+                  Sensor, Bread Board, Arduino Borad and connecting wire and
+                  implemented the Arduino code for it.
+                </p>
+              </div>
+              <div class="project-links">
+                <a href="#" target="_blank"
+                  ><i class="fas fa-video"></i> Video Demo</a
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>StockVision AI</h3>
+                <p>
+                  ML-powered stock monitoring and forecasting platform integrating a React–TypeScript front-end, Node.js backend, and FastAPI microservice using LSTM models, Docker, PostgreSQL, and Redis.
+                </p>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Vishal-gvs/StockVision-AI"
+                  target="_blank"
+                  ><i class="fab fa-github"></i> View on GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>ClientSync</h3>
+                <p>
+                  React–Vite–Tailwind frontend for managing clients and projects with real-time UI state synchronization via a modular API layer.
+                </p>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://client-sync-swart.vercel.app/"
+                  target="_blank"
+                  ><i class="fas fa-external-link-alt"></i> View Demo</a
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Hotel Guest Sentiment Analyzer</h3>
+                <p>
+                  A full-stack machine-learning web application that analyzes hotel reviews, predicts sentiment, and stores user analysis history. Built with Flask, NLTK, Scikit-Learn, TextBlob, PostgreSQL, and deployed on Render.
+                </p>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Vishal-gvs/Review_Sentiment_analyser"
+                  target="_blank"
+                  ><i class="fab fa-github"></i> View on GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-content">
+                <h3>Text to Speech Converter and Summarizer</h3>
+                <p>
+                  Developed an Text to speech converter and summarizer using python which uses Python libraries like NLTK for text preprocessing, Sumy or Transformers for summarization, and pyttsx3 or gTTS for text-to-speech conversion.
+                </p>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/Vishal-gvs/Text-to-speech-summarizer"
+                  target="_blank"
+                  ><i class="fab fa-github"></i> View on GitHub</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="achievements">
+        <div class="container fade-in">
+          <h2>Achievements & Competitions</h2>
+          <ul class="achievements-list">
+            <li>
+              Working on a research project likely to be published in March-2026.
+            </li>
+            <li>
+              Actively participated in Hackathons conducted in the university.
+            </li>
+            <li>
+              Volunteered in CR/CS department of placement Coordination – Active participation in events.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" class="section-bg">
+        <div class="container fade-in">
+          <h2>Get In Touch</h2>
+          <p>
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities to be part of your vision. Feel free to reach out!
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i> Srikakulam
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:vishalsai_godavari@srmap.edu.in"
+                >vishalsai_godavari@srmap.edu.in</a
+              >
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <a href="tel:+919347323221">+91 9347323221</a>
+            </div>
+          </div>
+          <div class="social-links">
+            <a
+              href="https://linkedin.com/in/vishalsaigodavari"
+              target="_blank"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/VishalSaiGodavari"
+              target="_blank"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://vishal-gvs.github.io/PortFolio/"
+              target="_blank"
+              aria-label="Portfolio"
+              ><i class="fas fa-briefcase"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Vishal Sai Godavari. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. Theme Toggler (Dark/Light Mode)
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+        const toggleIcon = themeToggle.querySelector("i");
+
+        // Check for saved theme in localStorage
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+          body.classList.add(currentTheme);
+          if (currentTheme === "dark-mode") {
+            toggleIcon.classList.remove("fa-sun");
+            toggleIcon.classList.add("fa-moon");
+          }
+        }
+
+        themeToggle.addEventListener("click", () => {
+          body.classList.toggle("dark-mode");
+
+          let theme = "light-mode";
+          if (body.classList.contains("dark-mode")) {
+            toggleIcon.classList.remove("fa-sun");
+            toggleIcon.classList.add("fa-moon");
+            theme = "dark-mode";
+          } else {
+            toggleIcon.classList.remove("fa-moon");
+            toggleIcon.classList.add("fa-sun");
+            theme = "light-mode";
+          }
+          localStorage.setItem("theme", theme);
+        });
+
+        // 2. Smooth Scrolling for Nav Links
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = e.currentTarget.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            window.scrollTo({
+              top: targetElement.offsetTop - 70, // Offset for sticky header
+              behavior: "smooth",
+            });
+          });
+        });
+
+        // 3. Scroll-in Animations (Intersection Observer)
+        const fadeElems = document.querySelectorAll(".fade-in");
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observerCallback = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target); // Animate only once
+            }
+          });
+        };
+
+        const scrollObserver = new IntersectionObserver(
+          observerCallback,
+          observerOptions
+        );
+
+        fadeElems.forEach((el) => scrollObserver.observe(el));
+
+        // 4. Active Nav Link Highlighting on Scroll
+        const sections = document.querySelectorAll("section[id]");
+
+        const navObserverOptions = {
+          root: null,
+          rootMargin: "-100px 0px -50% 0px", // Adjust margin to trigger at a good point
+          threshold: 0,
+        };
+
+        const navObserverCallback = (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+              document.querySelectorAll(".nav-link").forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+        };
+
+        const navObserver = new IntersectionObserver(
+          navObserverCallback,
+          navObserverOptions
+        );
+        sections.forEach((section) => navObserver.observe(section));
+      });
+    </script>
+
+    <!-- Particles.js live background -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        particlesJS("particles-js", {
+          "particles": {
+            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#007bff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": false },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": true, "distance": 150, "color": "#007bff", "opacity": 0.4, "width": 1 },
+            "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+          },
+          "interactivity": {
+            "detect_on": "window",
+            "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+            "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+          },
+          "retina_detect": true
+        });
+      });
+    </script>
+  </body>
+</html>
