@@ -460,10 +460,12 @@
       /* This class is now used by Education as well */
       .card-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        max-width: 800px;
-        margin: 0 auto;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      #education .card-grid .content-card:first-child {
+        grid-column: 1 / -1;
       }
 
       .experience-date {
@@ -688,6 +690,7 @@
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#achievements" class="nav-link">Certifications</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <div class="theme-toggle" id="theme-toggle">
@@ -1117,16 +1120,19 @@
           <h2>Achievements & Certifications</h2>
           <ul class="achievements-list">
             <li>
-              <strong>Java SE-17 Developer</strong> (Feb 2026)
+              <strong>Java SE-17 Developer</strong> (Feb 2026) <a href="https://drive.google.com/file/d/1c0lkgQ6Q3-J09JQzw3QKEoqYEAH28Rip/view?usp=sharing" target="_blank" style="margin-left: 10px; font-size: 0.9em;"><i class="fas fa-external-link-alt"></i> View</a>
             </li>
             <li>
-              <strong>MongoDB Associate Developer</strong> (Apr 2026)
+              <strong>MongoDB Associate Developer</strong> (Apr 2026) <a href="https://drive.google.com/file/d/1Ft0_qG_nsSdzzcmChOBXbPWTasaOd6Ps/view?usp=sharing" target="_blank" style="margin-left: 10px; font-size: 0.9em;"><i class="fas fa-external-link-alt"></i> View</a>
             </li>
             <li>
-              <strong>AI/ML Course Completion Certificate</strong> — TeachNook (Dec 2023)
+              <strong>AI/ML Course Completion Certificate</strong> — TeachNook (Dec 2023) <a href="https://drive.google.com/file/d/1f-RVm020-ShpK0Gd9dAfG9SZbSoq7C6O/view?usp=sharing" target="_blank" style="margin-left: 10px; font-size: 0.9em;"><i class="fas fa-external-link-alt"></i> View</a>
             </li>
             <li>
-              <strong>Web Development Basics & Developing Sites Certificates</strong> — IBM (Jun - Jul 2025)
+              <strong>Web Development Basics Completion Certificate</strong> — IBM (Jun 2025) <a href="https://drive.google.com/file/d/1nngPlh_MdFlufD99VKgkMh_HQZcEJtVq/view?usp=sharing" target="_blank" style="margin-left: 10px; font-size: 0.9em;"><i class="fas fa-external-link-alt"></i> View</a>
+            </li>
+            <li>
+              <strong>Developing Sites Completion Certificate</strong> — IBM (Jul 2025) <a href="https://drive.google.com/file/d/1xzOxAsDSgOtNYI_UYuB3OaJq4bzBaxfB/view?usp=sharing" target="_blank" style="margin-left: 10px; font-size: 0.9em;"><i class="fas fa-external-link-alt"></i> View</a>
             </li>
             <li>
               Working on a research project likely to be published in March-2026.
